@@ -1,15 +1,7 @@
 package com.POD.PODAPI.Modelo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+import lombok.*;
 
 @Entity
 @Table
@@ -19,17 +11,30 @@ import lombok.NoArgsConstructor;
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
     @Column(nullable = false)
-    private String nombre;
+    public String nombre;
     @Column(nullable = false)
-    private String primerApellido;
+    public String primerApellido;
     @Column(nullable = false)
-    private String segundoApellido;
+    public String segundoApellido;
     @Column(nullable = false)
-    private String fechaNacimiento;
+    public String fechaNacimiento;
     @Column(nullable = false)
-    private String domicilio;
+    public String domicilio;
+    public int edad;
+
+    public Persona(){
+
+    }
+
+    public Persona( String nombre, String primerApellido, String segundoApellido, String fechaNacimiento, String domicilio ){
+        this.nombre=nombre;
+        this.primerApellido=primerApellido;
+        this.segundoApellido=segundoApellido;
+        this.fechaNacimiento=fechaNacimiento;
+        this.domicilio=domicilio;
+    }
 
     public String getNombre(){
         return nombre;
@@ -67,6 +72,14 @@ public class Persona {
 
     public void setDomicilio(String domicilio){
         this.domicilio = domicilio;
+    }
+
+    public int getEdad(){
+        return edad;
+    }
+
+    public void setEdad(int edad){
+        this.edad=edad;
     }
 
 }

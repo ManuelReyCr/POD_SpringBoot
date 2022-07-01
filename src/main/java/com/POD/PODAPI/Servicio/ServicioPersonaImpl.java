@@ -1,20 +1,11 @@
 package com.POD.PODAPI.Servicio;
 
-import java.net.http.HttpClient;
 import java.util.Optional;
-
-import javax.persistence.NoResultException;
-
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.context.request.WebRequest;
-
+import com.POD.PODAPI.Dto.DTOPersona;
 import com.POD.PODAPI.Modelo.Persona;
 import com.POD.PODAPI.Repositorio.RepositorioPersona;
 import com.POD.PODAPI.Servicio.ServicioPersonaImpl;
-
 import lombok.AllArgsConstructor;
 
 @Service
@@ -28,8 +19,14 @@ public class ServicioPersonaImpl implements ServicioPersona{
     }
 
     @Override
-    public  Persona guardarPersona(Persona persona) {
-        return repositorioPersona.save(persona);
+    public  Persona guardarPersona(DTOPersona personaDto) {
+        if(Integer.parseInt(personaDto.getFechaNacimiento())>=1959 && Integer.parseInt(personaDto.getFechaNacimiento())<=2004 ){
+            Persona persona = new Persona(personaDto.getNombre(),personaDto.getPrimerApellido(),personaDto.getSegundoApellido(),personaDto.getFechaNacimiento(),personaDto.getDomicilio());
+            persona.edad = 2022 - Integer.parseInt(personaDto.getFechaNacimiento());
+            persona.fechaNacimiento = persona.fechaNacimiento + "/01/01";
+            return repositorioPersona.save(persona);
+        }
+        return null;
     }
 
     @Override
@@ -38,24 +35,18 @@ public class ServicioPersonaImpl implements ServicioPersona{
     }
 
     @Override
-    public Persona modificarPersona(Long id, Persona personaModifical) {
-        Persona personaBuscado=repositorioPersona.findById(id).get();
-        personaBuscado.setNombre(personaModifical.getNombre());
-        personaBuscado.setPrimerApellido(personaModifical.getPrimerApellido());
-        personaBuscado.setSegundoApellido(personaModifical.getSegundoApellido());
-        personaBuscado.setFechaNacimiento(personaModifical.getFechaNacimiento());
-        personaBuscado.setDomicilio(personaModifical.getDomicilio());
-       return repositorioPersona.save(personaBuscado);
-    }
-
-    @Override
-    public boolean eliminarPersona(Long id) {
-        try{
-            repositorioPersona.deleteById(id);
-            return true;
-        }catch(Exception e){
-            return false;
+    public Persona modificarPersona(Long id, DTOPersona personaModifical) {
+        Persona persona=repositorioPersona.findById(id).get();
+        if(Integer.parseInt(personaModifical.getFechaNacimiento())>=1959 && Integer.parseInt(personaModifical.getFechaNacimiento())<=2004 ){
+            persona.nombre = personaModifical.getNombre();
+            persona.primerApellido = personaModifical.getPrimerApellido();
+            persona.segundoApellido = personaModifical.getSegundoApellido();
+            persona.fechaNacimiento = personaModifical.getFechaNacimiento();
+            persona.domicilio = personaModifical.getDomicilio();
+            persona.edad = 2022 - Integer.parseInt(personaModifical.getFechaNacimiento());
+            persona.fechaNacimiento = persona.fechaNacimiento + "/01/01";
+            return repositorioPersona.save(persona);
         }
+        return null;  
     }
-    
 }
