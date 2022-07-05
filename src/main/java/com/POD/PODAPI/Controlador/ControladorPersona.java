@@ -4,11 +4,10 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import com.POD.PODAPI.Dto.DTOPersona;
 import com.POD.PODAPI.Servicio.ServicioPersona;
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/persona")
-@RequiredArgsConstructor
+
 public class ControladorPersona {
 
     private final ServicioPersona servicioPersona;

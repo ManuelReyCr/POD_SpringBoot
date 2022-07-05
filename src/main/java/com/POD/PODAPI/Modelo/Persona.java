@@ -1,26 +1,17 @@
 package com.POD.PODAPI.Modelo;
 
 import javax.persistence.*;
-import lombok.*;
 
 @Entity
 @Table
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-    @Column(nullable = false)
     public String nombre;
-    @Column(nullable = false)
     public String primerApellido;
-    @Column(nullable = false)
     public String segundoApellido;
-    @Column(nullable = false)
     public String fechaNacimiento;
-    @Column(nullable = false)
     public String domicilio;
     public int edad;
 
