@@ -28,6 +28,6 @@ public class ControladorPersona {
 
     @PutMapping("/{id}/persona")
     public ResponseEntity modificarPersona(@PathVariable("id") Long idPersona, @RequestBody DTOPersona persona){
-        return new ResponseEntity<>(servicioPersona.modificarPersona(idPersona,persona), HttpStatus.OK);
+        return new ResponseEntity<>(servicioPersona.modificarPersona(servicioPersona, idPersona,persona), HttpStatus.OK);
     }
 }

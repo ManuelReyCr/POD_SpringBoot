@@ -7,5 +7,6 @@ import com.POD.PODAPI.Modelo.Persona;
 @Repository
 public interface RepositorioPersona extends JpaRepository<Persona, Long> {
 
+
     
 }

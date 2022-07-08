@@ -1,11 +1,12 @@
 package com.POD.PODAPI.Dto;
 
+import java.util.Date;
 
 public class DTOPersona {
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
     private String domicilio;
 
     public String getNombre(){
@@ -31,10 +32,10 @@ public class DTOPersona {
         this.segundoApellido = segundoApellido;
     }
 
-    public String getFechaNacimiento(){
+    public Date getFechaNacimiento(){
         return fechaNacimiento;
     }
-    public void setFechaNacimiento(String fechaNacimiento){
+    public void setFechaNacimiento(Date fechaNacimiento){
         this.fechaNacimiento = fechaNacimiento;
     }
 

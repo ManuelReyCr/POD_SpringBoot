@@ -1,5 +1,7 @@
 package com.POD.PODAPI.Modelo;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +13,7 @@ public class Persona {
     public String nombre;
     public String primerApellido;
     public String segundoApellido;
-    public String fechaNacimiento;
+    public Date fechaNacimiento;
     public String domicilio;
     public int edad;
 
@@ -19,7 +21,7 @@ public class Persona {
 
     }
 
-    public Persona( String nombre, String primerApellido, String segundoApellido, String fechaNacimiento, String domicilio ){
+    public Persona( String nombre, String primerApellido, String segundoApellido, Date fechaNacimiento, String domicilio ){
         this.nombre=nombre;
         this.primerApellido=primerApellido;
         this.segundoApellido=segundoApellido;
@@ -50,10 +52,10 @@ public class Persona {
         this.segundoApellido = segundoApellido;
     }
 
-    public String getFechaNacimiento(){
+    public Date getFechaNacimiento(){
         return fechaNacimiento;
     }
-    public void setFechaNacimiento(String fechaNacimiento){
+    public void setFechaNacimiento(Date fechaNacimiento){
         this.fechaNacimiento = fechaNacimiento;
     }
 

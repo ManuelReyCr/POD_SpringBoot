@@ -1,12 +1,13 @@
 package com.POD.PODAPI;
 
 import static org.mockito.Mockito.when;
+
+import java.util.*;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.POD.PODAPI.Dto.DTOPersona;
-import com.POD.PODAPI.Servicio.ServicioPersona;
-import com.POD.PODAPI.Servicio.ServicioPersonaImpl;
+import com.POD.PODAPI.Servicio.ServicioPersona;;
 
 @SpringBootTest
 class PodApiApplicationTests {
@@ -14,9 +15,9 @@ class PodApiApplicationTests {
 	@Mock
 	private ServicioPersona servicioPersona;
 	@InjectMocks
-	private ServicioPersonaImpl servicioPersonaImpl;
 
 	private DTOPersona personaDto;
+	private Date date = new GregorianCalendar(2002, Calendar.OCTOBER, 18).getTime();
 
 	@BeforeEach
 	public void setup(){
@@ -25,7 +26,7 @@ class PodApiApplicationTests {
 		personaDto.setNombre("manuel");
 		personaDto.setPrimerApellido("rey");
 		personaDto.setSegundoApellido("cruz");
-		personaDto.setFechaNacimiento("2002");
+		personaDto.setFechaNacimiento(date);
 		personaDto.setDomicilio("av.siempre viva #111");
 
 	}
